@@ -13,11 +13,8 @@ class Program
         string caminhoArquivo = Console.ReadLine();
         Labirinto lab = new();
 
-        lab.LerArquivoDeLabirinto(caminhoArquivo);
-
-        foreach (var linha in lab.Mapa)
-        {
-            Console.WriteLine(new string(linha));
-        }
+        lab.CriarMapa(caminhoArquivo);
+        lab.PopularMapa(caminhoArquivo);
+        lab.DesenhaMapa();
     }
 }

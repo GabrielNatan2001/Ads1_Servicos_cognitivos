@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp
+namespace ConsoleApp.PecasLabirinto
 {
-    public class Robo
+    public class Robo : Peca
     {
         public int[,] Posicao { get; set; }
         public bool EncontrouHumano { get; set; } = false;
