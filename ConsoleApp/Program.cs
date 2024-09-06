@@ -7,14 +7,21 @@ class Program
 {
     static void Main()
     {
+        try
+        {
+            Console.WriteLine("Digite o caminho do arquivo:");
 
-        Console.WriteLine("Digite o caminho do arquivo:");
+            string caminhoArquivo = Console.ReadLine();
+            Labirinto lab = new();
 
-        string caminhoArquivo = Console.ReadLine();
-        Labirinto lab = new();
+            lab.CriarMapa(caminhoArquivo);
+            lab.PopularMapa(caminhoArquivo);
+            lab.DesenhaMapa();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
 
-        lab.CriarMapa(caminhoArquivo);
-        lab.PopularMapa(caminhoArquivo);
-        lab.DesenhaMapa();
     }
 }

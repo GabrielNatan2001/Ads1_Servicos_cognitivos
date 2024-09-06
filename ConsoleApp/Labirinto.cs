@@ -29,14 +29,20 @@ namespace ConsoleApp
             {
                 string linha;
                 int linhaAtual = 0;
+                int quantidadeColunas = 0;
 
                 while ((linha = sr.ReadLine()) != null)
                 {
+                    if(quantidadeColunas == 0)
+                    {
+                        quantidadeColunas = linha.ToCharArray().Length;
+                    }
                     var linhaItens = linha.ToCharArray();
 
-                    for (int colunaAtual = 0; colunaAtual < linhaItens.Length; colunaAtual++)
+                    for (int colunaAtual = 0; colunaAtual < quantidadeColunas; colunaAtual++)
                     {
-                        switch (linhaItens[colunaAtual])
+                        var i = (colunaAtual > linhaItens.Length -1) ? '\0': linhaItens[colunaAtual];
+                        switch (i)
                         {
                             case '*':
                                 this.Mapa[linhaAtual, colunaAtual] = new Parede();
@@ -55,6 +61,9 @@ namespace ConsoleApp
                                 {
                                     Posicao = new int[linhaAtual, colunaAtual]
                                 };
+                                break;
+                            default:
+                                this.Mapa[linhaAtual, colunaAtual] = new Caminho();
                                 break;
 
                         }
