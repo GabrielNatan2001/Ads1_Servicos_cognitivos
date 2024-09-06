@@ -8,19 +8,29 @@ namespace ConsoleApp.PecasLabirinto
 {
     public class Robo : Peca
     {
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
-        public bool EncontrouHumano { get; set; } = false;
-        public int[,] VisaoFrente { get; set; }
-             
+        public Robo(int linha, int coluna)
+        {
+            this.Linha = linha;
+            this.Coluna = coluna;
+            //TODO - Definir regra para visão inicial
+            this.VisaoLinha = linha;
+            this.VisaoColuna = coluna;
+        }
+        public int Linha { get; private set; }
+        public int Coluna { get; private set; }
+        private bool EncontrouHumano { get; set; } = false;
+
+        public int VisaoLinha { get; private set; }
+        public int VisaoColuna { get; private set; }
+
         public void MoverParaFrente()
         {
             Linha = Linha + 1;
         }
-        public void MoverParaDireta()
+        public void GirarParaDireita()
         {
-            Linha = Linha - 1;
-            Coluna = Coluna + 1;
+            VisaoLinha = VisaoLinha - 1;
+            VisaoColuna = VisaoColuna + 1;
         }
         public void PegarHumano()
         {

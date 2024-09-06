@@ -8,8 +8,13 @@ namespace ConsoleApp.PecasLabirinto
 {
     public class Humano : Peca
     {
-        public int Linha { get; set; }
-        public int Coluna { get; set; }
-        public bool Coletado { get; set; } = false;
+        public Humano(int linha, int coluna)
+        {
+            this.Linha = linha;
+            this.Coluna = coluna;
+        }
+        public int Linha { get; private set; }
+        public int Coluna { get; private set; }
+        public bool Coletado { get; private set; } = false;
     } 
 }

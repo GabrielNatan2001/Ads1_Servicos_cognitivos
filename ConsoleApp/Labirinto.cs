@@ -9,7 +9,9 @@ namespace ConsoleApp
 {
     public class Labirinto
     {
-        public Peca[,] Mapa { get; set; }
+        public Peca[,] Mapa { get; private set; }
+        public int LinhaEntrada  { get; private set; }
+        public int ColunaEntrada  { get; private set; }
 
         public void CriarMapa(string caminhoArquivo)
         {
@@ -46,18 +48,12 @@ namespace ConsoleApp
                                 this.Mapa[linhaAtual, colunaAtual] = new Caminho();
                                 break;
                             case 'E':
-                                this.Mapa[linhaAtual, colunaAtual] = new Entrada()
-                                {
-                                    Linha = linhaAtual,
-                                    Coluna = colunaAtual
-                                };
+                                this.Mapa[linhaAtual, colunaAtual] = new Entrada(linhaAtual, colunaAtual);
+                                this.ColunaEntrada = colunaAtual;
+                                this.LinhaEntrada = linhaAtual;
                                 break;
                             case 'H':
-                                this.Mapa[linhaAtual, colunaAtual] = new Humano()
-                                {
-                                    Linha = linhaAtual,
-                                    Coluna = colunaAtual
-                                };
+                                this.Mapa[linhaAtual, colunaAtual] = new Humano(linhaAtual, colunaAtual);
                                 break;
                             default:
                                 this.Mapa[linhaAtual, colunaAtual] = new Caminho();
