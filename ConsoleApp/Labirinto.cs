@@ -75,11 +75,11 @@ namespace ConsoleApp
                     {
                         case Parede:
                             Console.Write("*");
-                            break;;
+                            break;
                         case Caminho:
                             Console.Write(" ");
                             break;
-                        case Robo:
+                        case Entrada:
                             Console.Write("E");
                             break;
                         case Humano:
