@@ -1,0 +1,7 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/ConsoleApp/obj
+/.vs/Ads1_Servics_Cognitivos/v17
+/.vs/Ads1_Servics_Cognitivos/FileContentIndex
