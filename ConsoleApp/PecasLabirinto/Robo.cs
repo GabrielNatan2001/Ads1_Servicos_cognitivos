@@ -12,9 +12,7 @@ namespace ConsoleApp.PecasLabirinto
         {
             this.Linha = linha;
             this.Coluna = coluna;
-            //TODO - Definir regra para visão inicial
-            this.VisaoLinha = linha;
-            this.VisaoColuna = coluna;
+            IniciandoVisao();
         }
         public int Linha { get; private set; }
         public int Coluna { get; private set; }
@@ -23,6 +21,13 @@ namespace ConsoleApp.PecasLabirinto
         public int VisaoLinha { get; private set; }
         public int VisaoColuna { get; private set; }
 
+        private void IniciandoVisao()
+        {
+            //TODO - Definir regra para visão inicial
+            if (Linha == 0)
+            {
+            }
+        }
         public void MoverParaFrente()
         {
             Linha = Linha + 1;
@@ -32,6 +37,7 @@ namespace ConsoleApp.PecasLabirinto
             VisaoLinha = VisaoLinha - 1;
             VisaoColuna = VisaoColuna + 1;
         }
+
         public void PegarHumano()
         {
             
