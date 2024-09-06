@@ -48,13 +48,15 @@ namespace ConsoleApp
                             case 'E':
                                 this.Mapa[linhaAtual, colunaAtual] = new Entrada()
                                 {
-                                    Posicao = new int[linhaAtual, colunaAtual]
+                                    Linha = linhaAtual,
+                                    Coluna = colunaAtual
                                 };
                                 break;
                             case 'H':
                                 this.Mapa[linhaAtual, colunaAtual] = new Humano()
                                 {
-                                    Posicao = new int[linhaAtual, colunaAtual]
+                                    Linha = linhaAtual,
+                                    Coluna = colunaAtual
                                 };
                                 break;
                             default:

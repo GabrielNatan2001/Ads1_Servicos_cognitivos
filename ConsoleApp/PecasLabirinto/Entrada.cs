@@ -8,6 +8,8 @@ namespace ConsoleApp.PecasLabirinto
 {
     public class Entrada : Peca
     {
-        public int[,] Posicao { get; set; }
+
+        public int Linha { get; set; }
+        public int Coluna { get; set; }
     }
 }
