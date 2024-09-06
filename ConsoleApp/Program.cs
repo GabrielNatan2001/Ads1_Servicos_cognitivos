@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
+using ConsoleApp;
 
 class Program
 {
@@ -10,29 +11,13 @@ class Program
         Console.WriteLine("Digite o caminho do arquivo:");
 
         string caminhoArquivo = Console.ReadLine();
-        List<char[]> labirinto = new List<char[]>();
+        Labirinto lab = new();
 
-        try
-        {
-            using (StreamReader sr = new StreamReader(caminhoArquivo))
-            {
-                string linha;
-                while ((linha = sr.ReadLine()) != null)
-                {
-                    labirinto.Add(linha.ToCharArray());
-                }
-            }
+        lab.LerArquivoDeLabirinto(caminhoArquivo);
 
-            // Exibe a matriz de labirinto
-            Console.WriteLine("Labirinto:");
-            foreach (char[] linha in labirinto)
-            {
-                Console.WriteLine(new string(linha));
-            }
-        }
-        catch (Exception e)
+        foreach (var linha in lab.Mapa)
         {
-            Console.WriteLine("Ocorreu um erro: " + e.Message);
+            Console.WriteLine(new string(linha));
         }
     }
 }
