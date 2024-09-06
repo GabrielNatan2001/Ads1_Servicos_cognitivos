@@ -29,17 +29,12 @@ namespace ConsoleApp
             {
                 string linha;
                 int linhaAtual = 0;
-                int quantidadeColunas = 0;
 
                 while ((linha = sr.ReadLine()) != null)
                 {
-                    if(quantidadeColunas == 0)
-                    {
-                        quantidadeColunas = linha.ToCharArray().Length;
-                    }
                     var linhaItens = linha.ToCharArray();
 
-                    for (int colunaAtual = 0; colunaAtual < quantidadeColunas; colunaAtual++)
+                    for (int colunaAtual = 0; colunaAtual < this.Mapa.GetLength(1); colunaAtual++)
                     {
                         var i = (colunaAtual > linhaItens.Length -1) ? '\0': linhaItens[colunaAtual];
                         switch (i)
