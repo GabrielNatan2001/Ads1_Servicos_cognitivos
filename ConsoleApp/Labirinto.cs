@@ -47,8 +47,11 @@ namespace ConsoleApp
                                 this.Mapa[linhaAtual, colunaAtual] = new Caminho();
                                 break;
                             case 'E':
-                                this.Mapa[linhaAtual, colunaAtual] = new Robo();
-
+                                this.Mapa[linhaAtual, colunaAtual] = new Robo()
+                                {
+                                    Posicao = new int[linhaAtual, colunaAtual]
+                                };
+                                this.Entrada = new int[linhaAtual, colunaAtual];
                                 break;
                             case 'H':
                                 this.Mapa[linhaAtual, colunaAtual] = new Pessoa();
