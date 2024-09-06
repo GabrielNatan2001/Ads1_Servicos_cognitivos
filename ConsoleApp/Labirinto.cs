@@ -54,7 +54,10 @@ namespace ConsoleApp
                                 this.Entrada = new int[linhaAtual, colunaAtual];
                                 break;
                             case 'H':
-                                this.Mapa[linhaAtual, colunaAtual] = new Pessoa();
+                                this.Mapa[linhaAtual, colunaAtual] = new Pessoa()
+                                {
+                                    Posicao = new int[linhaAtual, colunaAtual]
+                                };
                                 break;
 
                         }
@@ -88,7 +91,6 @@ namespace ConsoleApp
 
                     }
                 }
-
                 Console.Write("\n");
             }
         }
