@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.PecasLabirinto
 {
-    public class Pessoa : Peca
+    public class Humano : Peca
     {
         public int[,] Posicao { get; set; }
+        public bool Coletado { get; set; } = false;
     } 
 }

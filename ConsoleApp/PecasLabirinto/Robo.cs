@@ -10,7 +10,8 @@ namespace ConsoleApp.PecasLabirinto
     {
         public int[,] Posicao { get; set; }
         public bool EncontrouHumano { get; set; } = false;
-
+        public int[,] VisaoFrente { get; set; }
+             
         public void MoverParaFrente()
         {
 
