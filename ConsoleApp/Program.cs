@@ -19,14 +19,44 @@ class Program
             lab.PopularMapa(caminhoArquivo);
             lab.DesenhaMapa();
 
-            Robo robo = new Robo(lab.LinhaEntrada, lab.ColunaEntrada);
+            lab.Iniciar();
 
-            Console.WriteLine($"Robo está olhando para [{robo.VisaoLinha}][{robo.VisaoColuna}]");
-            robo.GirarParaDireita();
-            Console.WriteLine($"Robo está olhando para [{robo.VisaoLinha}][{robo.VisaoColuna}]");
-            Console.WriteLine($"Robo está na posição [{robo.Linha}][{robo.Coluna}]");
-            robo.MoverParaFrente();
-            Console.WriteLine($"Robo está na posição [{robo.Linha}][{robo.Coluna}]");
+
+            Console.WriteLine("\n\n\nLabirinto com coordenadas");
+            for (int linhaAtual = 0; linhaAtual < lab.Mapa.GetLength(0); linhaAtual++)
+            {
+                for (int colunaAtual = 0; colunaAtual < lab.Mapa.GetLength(1); colunaAtual++)
+                {
+                    var peca = lab.Mapa[linhaAtual, colunaAtual];
+                    if (lab.HumanoL.Linha == linhaAtual && lab.HumanoL.Coluna == colunaAtual)
+                    {
+                        peca = new Humano(linhaAtual, colunaAtual);
+                    }
+                    else if (lab.EntradaL.Linha == linhaAtual && lab.EntradaL.Coluna == colunaAtual)
+                    {
+                        peca = new Entrada(linhaAtual, colunaAtual);
+                    }
+                    switch (peca)
+                    {
+                        case Parede:
+                            Console.Write($"({linhaAtual},{colunaAtual})*");
+                            break;
+                        case Caminho:
+                            Console.Write($"({linhaAtual},{colunaAtual}) ");
+                            break;
+                        case Entrada:
+                            Console.Write($"({linhaAtual},{colunaAtual})E");
+                            break;
+                        case Humano:
+                            Console.Write($"({linhaAtual},{colunaAtual})H");
+                            break;
+
+                    }
+                }
+                Console.Write("\n");
+            }
+
+            Console.ReadLine();
         }
         catch (Exception ex)
         {
