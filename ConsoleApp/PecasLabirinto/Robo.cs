@@ -20,6 +20,7 @@ namespace ConsoleApp.PecasLabirinto
 
         public int VisaoLinha { get; private set; }
         public int VisaoColuna { get; private set; }
+        public BuscaAStar AStart {  get; set; }
 
         private void IniciandoVisao()
         {
@@ -48,6 +49,25 @@ namespace ConsoleApp.PecasLabirinto
         }
         public void Log(string movimento)
         {
+
+        }
+        public void IniciarBusca(Peca[,] mapa, Entrada entrada, Humano humano)
+        {
+            var astar = new BuscaAStar(mapa);
+
+            var caminho = astar.BuscarCaminhoAStar(entrada.Linha, entrada.Coluna, humano.Linha, humano.Coluna);
+            Console.WriteLine("\nCaminho Encontrado:");
+            if (caminho.Count > 0)
+            {
+                foreach (var pos in caminho)
+                {
+                    Console.WriteLine($"({pos.Item1}, {pos.Item2})");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhum caminho encontrado.");
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ class Program
             lab.PopularMapa(caminhoArquivo);
             lab.DesenhaMapa();
 
-            lab.Iniciar();
+            lab.Robo.IniciarBusca(lab.Mapa, lab.EntradaL, lab.HumanoL);
 
 
             Console.WriteLine("\n\n\nLabirinto com coordenadas");

@@ -110,23 +110,5 @@ namespace ConsoleApp
             }
         }
 
-        public void Iniciar()
-        {
-            BuscaAStar astar = new BuscaAStar(this.Mapa);
-
-            var caminho = astar.BuscarCaminhoAStar(LinhaEntrada, ColunaEntrada, HumanoL.Linha, HumanoL.Coluna);
-            Console.WriteLine("\nCaminho Encontrado:");
-            if (caminho.Count > 0)
-            {
-                foreach (var pos in caminho)
-                {
-                    Console.WriteLine($"({pos.Item1}, {pos.Item2})");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Nenhum caminho encontrado.");
-            }
-        }
     }
 }
