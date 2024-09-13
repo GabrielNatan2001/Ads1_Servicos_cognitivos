@@ -10,10 +10,10 @@ namespace ConsoleApp
 {
     public class Labirinto
     {
-        public Peca[,] Mapa { get; private set; }
-        public Robo Robo { get; private set; }
-        public Humano HumanoL { get; private set; }
-        public Entrada EntradaL { get; private set; }
+        public Peca[,] mapa { get; private set; }
+        public Robo robo { get; private set; }
+        public Humano humano { get; private set; }
+        public Entrada entrada { get; private set; }
 
         public void CriarMapa(string caminhoArquivo)
         {
@@ -24,8 +24,10 @@ namespace ConsoleApp
                 int qtdeColunas = sr.ReadLine().ToArray().Length;
                 int qtdeLinhas = linhas.Length;
 
-                this.Mapa = new Peca[qtdeLinhas, qtdeColunas];
+                this.mapa = new Peca[qtdeLinhas, qtdeColunas];
             }
+
+            PopularMapa(caminhoArquivo);
         }
         public void PopularMapa(string caminhoArquivo)
         {
@@ -38,28 +40,28 @@ namespace ConsoleApp
                 {
                     var linhaItens = linha.ToCharArray();
 
-                    for (int colunaAtual = 0; colunaAtual < this.Mapa.GetLength(1); colunaAtual++)
+                    for (int colunaAtual = 0; colunaAtual < this.mapa.GetLength(1); colunaAtual++)
                     {
                         var i = (colunaAtual > linhaItens.Length -1) ? '\0': linhaItens[colunaAtual];
                         switch (i)
                         {
                             case '*':
-                                this.Mapa[linhaAtual, colunaAtual] = new Parede();
+                                this.mapa[linhaAtual, colunaAtual] = new Parede();
                                 break;
                             case ' ':
-                                this.Mapa[linhaAtual, colunaAtual] = new Caminho();
+                                this.mapa[linhaAtual, colunaAtual] = new Caminho();
                                 break;
                             case 'E':
-                                this.Mapa[linhaAtual, colunaAtual] = new Entrada(linhaAtual, colunaAtual);
-                                this.EntradaL = new Entrada(linhaAtual, colunaAtual);
-                                this.Robo = new Robo(linhaAtual, colunaAtual);
+                                this.mapa[linhaAtual, colunaAtual] = new Entrada(linhaAtual, colunaAtual);
+                                this.entrada = new Entrada(linhaAtual, colunaAtual);
+                                this.robo = new Robo(linhaAtual, colunaAtual);
                                 break;
                             case 'H':
-                                this.Mapa[linhaAtual, colunaAtual] = new Caminho();
-                                this.HumanoL = new Humano(linhaAtual, colunaAtual);
+                                this.mapa[linhaAtual, colunaAtual] = new Caminho();
+                                this.humano = new Humano(linhaAtual, colunaAtual);
                                 break;
                             default:
-                                this.Mapa[linhaAtual, colunaAtual] = new Caminho();
+                                this.mapa[linhaAtual, colunaAtual] = new Caminho();
                                 break;
 
                         }
@@ -71,17 +73,14 @@ namespace ConsoleApp
 
         public void DesenhaMapa()
         {
-            for (int linhaAtual = 0; linhaAtual < this.Mapa.GetLength(0); linhaAtual++)
+            for (int linhaAtual = 0; linhaAtual < this.mapa.GetLength(0); linhaAtual++)
             {
-                for (int colunaAtual = 0; colunaAtual < this.Mapa.GetLength(1); colunaAtual++)
+                for (int colunaAtual = 0; colunaAtual < this.mapa.GetLength(1); colunaAtual++)
                 {
-                    var peca = this.Mapa[linhaAtual, colunaAtual];
-                    if (HumanoL.Linha == linhaAtual && HumanoL.Coluna == colunaAtual)
+                    var peca = this.mapa[linhaAtual, colunaAtual];
+                    if (humano.Linha == linhaAtual && humano.Coluna == colunaAtual)
                     {
                         peca = new Humano(linhaAtual, colunaAtual);
-                    }else if (EntradaL.Linha == linhaAtual && EntradaL.Coluna == colunaAtual)
-                    {
-                        peca = new Entrada(linhaAtual, colunaAtual);
                     }
 
                     switch (peca)

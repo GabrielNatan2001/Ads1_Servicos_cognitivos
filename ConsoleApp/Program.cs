@@ -16,42 +16,15 @@ class Program
             Labirinto lab = new();
 
             lab.CriarMapa(caminhoArquivo);
-            lab.PopularMapa(caminhoArquivo);
             lab.DesenhaMapa();
 
-            lab.Robo.IniciarBusca(lab.Mapa, lab.EntradaL, lab.HumanoL);
+            lab.robo.IniciarBusca(lab.mapa, lab.entrada, lab.humano);
 
-            Console.WriteLine("\n\n\nLabirinto com coordenadas");
-            for (int linhaAtual = 0; linhaAtual < lab.Mapa.GetLength(0); linhaAtual++)
+            if(lab.humano.Linha == lab.entrada.Linha && lab.humano.Coluna == lab.entrada.Coluna)
             {
-                for (int colunaAtual = 0; colunaAtual < lab.Mapa.GetLength(1); colunaAtual++)
-                {
-                    var peca = lab.Mapa[linhaAtual, colunaAtual];
-                    if (lab.HumanoL.Linha == linhaAtual && lab.HumanoL.Coluna == colunaAtual)
-                    {
-                        peca = new Humano(linhaAtual, colunaAtual);
-                    }
-
-                    switch (peca)
-                    {
-                        case Parede:
-                            Console.Write($"({linhaAtual},{colunaAtual})*");
-                            break;
-                        case Caminho:
-                            Console.Write($"({linhaAtual},{colunaAtual}) ");
-                            break;
-                        case Entrada:
-                            Console.Write($"({linhaAtual},{colunaAtual})E");
-                            break;
-                        case Humano:
-                            Console.Write($"({linhaAtual},{colunaAtual})H");
-                            break;
-
-                    }
-                }
-                Console.Write("\n");
+                Console.WriteLine("Humano saiu do labirinto");
             }
-
+            
             Console.ReadLine();
         }
         catch (Exception ex)

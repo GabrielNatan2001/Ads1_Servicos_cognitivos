@@ -22,8 +22,10 @@ namespace ConsoleApp.PecasLabirinto
             Coletado = true;
         }
 
-        internal void Ejetado()
+        internal void Ejetado(int linha, int coluna)
         {
+            this.Linha = linha;
+            this.Coluna = coluna;
             Coletado = false;
         }
 

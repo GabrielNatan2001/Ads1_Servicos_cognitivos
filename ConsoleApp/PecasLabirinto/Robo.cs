@@ -40,10 +40,8 @@ namespace ConsoleApp.PecasLabirinto
         {
             this.EncontrouHumano = true;
         }
-        public void EjetarHumano(int linha, int coluna)
+        public void EjetarHumano()
         {
-            this.Linha = linha;
-            this.Coluna = coluna;
             this.EncontrouHumano = false;
         }
         public void Log(string movimento)
@@ -61,7 +59,7 @@ namespace ConsoleApp.PecasLabirinto
             var astar = new BuscaAStar(mapa);
 
             var caminho = astar.BuscarCaminhoAStar(entrada.Linha, entrada.Coluna, humano.Linha, humano.Coluna);
-            Console.WriteLine("\nCaminho Encontrado:");
+            Console.WriteLine("\nCaminho Encontrado");
             if (caminho.Count > 0)
             {
                 for(int i = 0; i < caminho.Count - 1; i++)
@@ -71,7 +69,6 @@ namespace ConsoleApp.PecasLabirinto
                     {
                         PegarHumano();
                         humano.ColetadoPeloRobo();
-                        humano.Ejetado();
                     }
                     else
                     {
@@ -87,7 +84,8 @@ namespace ConsoleApp.PecasLabirinto
                     {
                         AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
                         humano.AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
-                        this.EjetarHumano(entrada.Linha, entrada.Coluna);
+                        this.EjetarHumano();
+                        humano.Ejetado(entrada.Linha, entrada.Coluna);
                     }
                     else
                     {
