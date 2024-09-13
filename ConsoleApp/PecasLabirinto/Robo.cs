@@ -24,10 +24,7 @@ namespace ConsoleApp.PecasLabirinto
 
         private void IniciandoVisao()
         {
-            //TODO - Definir regra para visão inicial
-            if (Linha == 0)
-            {
-            }
+           
         }
         public void MoverParaFrente()
         {

@@ -17,15 +17,16 @@ namespace ConsoleApp
 
         public List<(int, int)> BuscarCaminhoAStar(int linhaEntrada, int colunaEntrada, int humanoLinha, int humanoColuna)
         {
-            var start = (linhaEntrada, colunaEntrada, 0); // 0 = Orientação para cima (norte)
-            var goal = (humanoLinha, humanoColuna);
+            int orientacaoInicial = DeterminarOrientacaoInicial(linhaEntrada, colunaEntrada);
+            var inicio = (linhaEntrada, colunaEntrada, orientacaoInicial);
+            var objetivo = (humanoLinha, humanoColuna);
 
-            var openList = new PriorityQueue<Node, int>();
-            var cameFrom = new Dictionary<(int, int, int), (int, int, int)>();
+            var listaAberta = new PriorityQueue<Node, int>();
+            var veioDe = new Dictionary<(int, int, int), (int, int, int)>();
             var gScore = new Dictionary<(int, int, int), int>();
             var fScore = new Dictionary<(int, int, int), int>();
 
-            foreach (var pos in GetAllPositions())
+            foreach (var pos in ObterTodasPosicoes())
             {
                 for (int dir = 0; dir < 4; dir++)
                 {
@@ -34,137 +35,149 @@ namespace ConsoleApp
                 }
             }
 
-            gScore[start] = 0;
-            fScore[start] = Heuristic(start, goal);
+            gScore[inicio] = 0;
+            fScore[inicio] = Heuristica(inicio, objetivo);
 
-            openList.Enqueue(new Node(start, 0, Heuristic(start, goal)), fScore[start]);
+            listaAberta.Enqueue(new Node(inicio, 0, Heuristica(inicio, objetivo)), fScore[inicio]);
 
-            while (openList.Count > 0)
+            while (listaAberta.Count > 0)
             {
-                var current = openList.Dequeue().Position;
+                var atual = listaAberta.Dequeue().Posicao;
 
-                if ((current.Item1, current.Item2) == goal)
+                if ((atual.Item1, atual.Item2) == objetivo)
                 {
-                    var path = ReconstructPath(cameFrom, current);
-                    return path;
+                    var caminho = ReconstruirCaminho(veioDe, atual);
+                    return caminho;
                 }
 
-                foreach (var neighbor in GetNeighbors(current))
+                foreach (var vizinho in ObterVizinhos(atual))
                 {
-                    var tentativeGScore = gScore[current] + (neighbor.Item3 == current.Item3 ? 1 : 2); // 1 para avanço, 2 para giro
+                    var gScoreTentativo = gScore[atual] + (vizinho.Item3 == atual.Item3 ? 1 : 2); // 1 para avanço, 2 para giro
 
-                    if (tentativeGScore < gScore[neighbor])
+                    if (gScoreTentativo < gScore[vizinho])
                     {
-                        cameFrom[neighbor] = current;
-                        gScore[neighbor] = tentativeGScore;
-                        fScore[neighbor] = gScore[neighbor] + Heuristic(neighbor, goal);
+                        veioDe[vizinho] = atual;
+                        gScore[vizinho] = gScoreTentativo;
+                        fScore[vizinho] = gScore[vizinho] + Heuristica(vizinho, objetivo);
 
-                        openList.Enqueue(new Node(neighbor, gScore[neighbor], fScore[neighbor]), fScore[neighbor]);
+                        listaAberta.Enqueue(new Node(vizinho, gScore[vizinho], fScore[vizinho]), fScore[vizinho]);
                     }
                 }
             }
 
             return new List<(int, int)>(); // Não encontrou caminho
         }
-
-        private IEnumerable<(int, int, int)> GetNeighbors((int, int, int) pos)
+        private int DeterminarOrientacaoInicial(int linhaEntrada, int colunaEntrada)
         {
-            var directions = new (int, int)[]
+            if (linhaEntrada == 0) return 1; // Se estiver na borda superior, inicializa para baixo
+            if (linhaEntrada == Mapa.GetLength(0) - 1) return 0; // Se estiver na borda inferior, inicializa para cima
+            if (colunaEntrada == 0) return 3; // Se estiver na borda esquerda, inicializa para a direita
+            if (colunaEntrada == Mapa.GetLength(1) - 1) return 2; // Se estiver na borda direita, inicializa para a esquerda
+
+            return 0;
+        }
+        private IEnumerable<(int, int, int)> ObterVizinhos((int, int, int) pos)
+        {
+            var direcoes = new (int, int)[]
             {
-            (-1, 0), (1, 0), (0, -1), (0, 1) // Up, Down, Left, Right
-            };
+                (-1, 0), // Cima
+                (1, 0),  // Baixo
+                (0, -1), // Esquerda
+                (0, 1)   // Direita
+                    };
 
-            var orientation = pos.Item3;
-            var moveDirection = directions[orientation];
+            var orientacaoAtual = pos.Item3;
+            var movimentoAtual = direcoes[orientacaoAtual];
 
-            // Avançar
-            var forwardRow = pos.Item1 + moveDirection.Item1;
-            var forwardCol = pos.Item2 + moveDirection.Item2;
+            // Movimento para frente
+            var linhaFrente = pos.Item1 + movimentoAtual.Item1;
+            var colunaFrente = pos.Item2 + movimentoAtual.Item2;
 
-            if (IsValidPosition(forwardRow, forwardCol) && !(Mapa[forwardRow, forwardCol] is Parede))
+            if (EhPosicaoValida(linhaFrente, colunaFrente) && !(Mapa[linhaFrente, colunaFrente] is Parede))
             {
-                yield return (forwardRow, forwardCol, orientation); // Avançar mantém a mesma orientação
+                yield return (linhaFrente, colunaFrente, orientacaoAtual); // Avançar mantém a mesma orientação
             }
 
-            // Girar 90 graus à direita
-            var newOrientation = (orientation + 1) % 4;
-            yield return (pos.Item1, pos.Item2, newOrientation); // Gira para a direita
+            // Giro 90 graus à direita
+            var novaOrientacao = (orientacaoAtual + 1) % 4;
+            yield return (pos.Item1, pos.Item2, novaOrientacao); // Gira para a direita
         }
 
-        private bool IsValidPosition(int row, int col)
+        private bool EhPosicaoValida(int linha, int coluna)
         {
-            return row >= 0 && row < Mapa.GetLength(0) && col >= 0 && col < Mapa.GetLength(1);
+            return linha >= 0 && linha < Mapa.GetLength(0) && coluna >= 0 && coluna < Mapa.GetLength(1);
         }
 
-        private int Heuristic((int, int, int) a, (int, int) b)
+        private int Heuristica((int, int, int) a, (int, int) b)
         {
             // Considera apenas a posição (despreza a orientação)
-            return Math.Abs(a.Item1 - b.Item1) + Math.Abs(a.Item2 - b.Item2); // Manhattan Distance
+            return Math.Abs(a.Item1 - b.Item1) + Math.Abs(a.Item2 - b.Item2); // Distância de Manhattan
         }
 
-        private List<(int, int)> ReconstructPath(Dictionary<(int, int, int), (int, int, int)> cameFrom, (int, int, int) current)
+        private List<(int, int)> ReconstruirCaminho(Dictionary<(int, int, int), (int, int, int)> veioDe, (int, int, int) atual)
         {
-            var totalPath = new List<(int, int)>();
-            var commands = new List<char>();
+            var caminhoTotal = new List<(int, int)>();
+            var comandos = new List<char>();
 
-            while (cameFrom.ContainsKey(current))
+            while (veioDe.ContainsKey(atual))
             {
-                var previous = cameFrom[current];
-                if (current.Item3 == previous.Item3)
+                var anterior = veioDe[atual];
+                if (atual.Item3 == anterior.Item3)
                 {
                     // Movimento para frente
-                    commands.Add('A');
+                    comandos.Add('A');
                 }
                 else
                 {
                     // Giro
-                    commands.Add('G');
+                    comandos.Add('G');
                 }
 
-                totalPath.Add((current.Item1, current.Item2));
-                current = previous;
+                caminhoTotal.Add((atual.Item1, atual.Item2));
+                atual = anterior;
             }
-            totalPath.Reverse();
-            commands.Reverse();
+            caminhoTotal.Reverse();
+            comandos.Reverse();
 
             // Log dos comandos
-            LogCommands(commands);
+            RegistrarComandos(comandos);
 
-            return totalPath;
+            return caminhoTotal;
         }
 
-        private void LogCommands(List<char> commands)
+        private void RegistrarComandos(List<char> comandos)
         {
-            var logFilePath = "comandos.txt";
-            using (StreamWriter sw = new StreamWriter(logFilePath))
+            var caminhoArquivoLog = "comandos.txt";
+            using (StreamWriter sw = new StreamWriter(caminhoArquivoLog))
             {
-                sw.WriteLine(string.Join(",", commands));
+                sw.WriteLine(string.Join(",", comandos));
             }
         }
 
-        private IEnumerable<(int, int)> GetAllPositions()
+        private IEnumerable<(int, int)> ObterTodasPosicoes()
         {
-            for (int row = 0; row < Mapa.GetLength(0); row++)
+            for (int linha = 0; linha < Mapa.GetLength(0); linha++)
             {
-                for (int col = 0; col < Mapa.GetLength(1); col++)
+                for (int coluna = 0; coluna < Mapa.GetLength(1); coluna++)
                 {
-                    yield return (row, col);
+                    yield return (linha, coluna);
                 }
             }
         }
 
         private class Node
         {
-            public (int, int, int) Position { get; }
+            public (int, int, int) Posicao { get; }
             public int GScore { get; }
             public int FScore { get; }
 
-            public Node((int, int, int) position, int gScore, int fScore)
+            public Node((int, int, int) posicao, int gScore, int fScore)
             {
-                Position = position;
+                Posicao = posicao;
                 GScore = gScore;
                 FScore = fScore;
             }
         }
     }
+
 }
