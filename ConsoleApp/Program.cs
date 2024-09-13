@@ -21,7 +21,6 @@ class Program
 
             lab.Robo.IniciarBusca(lab.Mapa, lab.EntradaL, lab.HumanoL);
 
-
             Console.WriteLine("\n\n\nLabirinto com coordenadas");
             for (int linhaAtual = 0; linhaAtual < lab.Mapa.GetLength(0); linhaAtual++)
             {
@@ -32,10 +31,7 @@ class Program
                     {
                         peca = new Humano(linhaAtual, colunaAtual);
                     }
-                    else if (lab.EntradaL.Linha == linhaAtual && lab.EntradaL.Coluna == colunaAtual)
-                    {
-                        peca = new Entrada(linhaAtual, colunaAtual);
-                    }
+
                     switch (peca)
                     {
                         case Parede:

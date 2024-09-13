@@ -11,9 +11,6 @@ namespace ConsoleApp
     public class Labirinto
     {
         public Peca[,] Mapa { get; private set; }
-        public int LinhaEntrada  { get; private set; }
-        public int ColunaEntrada  { get; private set; }
-
         public Robo Robo { get; private set; }
         public Humano HumanoL { get; private set; }
         public Entrada EntradaL { get; private set; }
@@ -53,11 +50,9 @@ namespace ConsoleApp
                                 this.Mapa[linhaAtual, colunaAtual] = new Caminho();
                                 break;
                             case 'E':
-                                this.Mapa[linhaAtual, colunaAtual] = new Caminho();
+                                this.Mapa[linhaAtual, colunaAtual] = new Entrada(linhaAtual, colunaAtual);
                                 this.EntradaL = new Entrada(linhaAtual, colunaAtual);
                                 this.Robo = new Robo(linhaAtual, colunaAtual);
-                                this.ColunaEntrada = colunaAtual;
-                                this.LinhaEntrada = linhaAtual;
                                 break;
                             case 'H':
                                 this.Mapa[linhaAtual, colunaAtual] = new Caminho();

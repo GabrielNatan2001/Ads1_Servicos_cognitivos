@@ -38,15 +38,23 @@ namespace ConsoleApp.PecasLabirinto
 
         public void PegarHumano()
         {
-            
+            this.EncontrouHumano = true;
         }
-        public void EjetarHumano()
+        public void EjetarHumano(int linha, int coluna)
         {
-
+            this.Linha = linha;
+            this.Coluna = coluna;
+            this.EncontrouHumano = false;
         }
         public void Log(string movimento)
         {
 
+        }
+
+        public void AlterarPosicao(int linha, int coluna)
+        {
+            this.Linha= linha;
+            this.Coluna= coluna;
         }
         public void IniciarBusca(Peca[,] mapa, Entrada entrada, Humano humano)
         {
@@ -56,9 +64,36 @@ namespace ConsoleApp.PecasLabirinto
             Console.WriteLine("\nCaminho Encontrado:");
             if (caminho.Count > 0)
             {
-                foreach (var pos in caminho)
+                for(int i = 0; i < caminho.Count - 1; i++)
                 {
-                    Console.WriteLine($"({pos.Item1}, {pos.Item2})");
+                    //Chegou uma posição antes do humano, pegar humano
+                    if (caminho[i].Item1 == humano.Linha && caminho[i].Item2 == humano.Coluna)
+                    {
+                        PegarHumano();
+                        humano.ColetadoPeloRobo();
+                        humano.Ejetado();
+                    }
+                    else
+                    {
+                        AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
+                        humano.AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
+                    }
+                }
+
+                for (int i = caminho.Count -1; i >= 0; i--)
+                {
+                    //Chegou uma posição antes da entrada, ejetar humano
+                    if (i == 0)
+                    {
+                        AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
+                        humano.AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
+                        this.EjetarHumano(entrada.Linha, entrada.Coluna);
+                    }
+                    else
+                    {
+                        AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
+                        humano.AlterarPosicao(caminho[i].Item1, caminho[i].Item2);
+                    }
                 }
             }
             else
