@@ -47,16 +47,15 @@ namespace ConsoleApp.PecasLabirinto
         }
         public void Andar(int linha, int coluna, Peca[,] mapa)
         {
-            if (mapa[linha, coluna] is Caminho)
-            {
-                this.Linha = linha;
-                this.Coluna = coluna;
-                Log("A");
-            }
-            else
+            // Validação: Checar colisão com parede
+            if (!(mapa[linha, coluna] is Caminho))
             {
                 throw new Exception("Robo não é permitido andar para uma posição que não seja caminho!");
             }
+
+            this.Linha = linha;
+            this.Coluna = coluna;
+            Log("A");
         }
 
         public void GirarParaDireita()
@@ -79,14 +78,32 @@ namespace ConsoleApp.PecasLabirinto
             Log("G");
         }
 
-        public void PegarHumano()
+        public void PegarHumano(Humano humano)
         {
-            this.EncontrouHumano = true;
+            // Validação: Checar se o humano está à frente do robô
+            if (humano.Linha != Linha || humano.Coluna != Coluna)
+            {
+                throw new Exception("Não há humano à frente do robô para ser coletado!");
+            }
+
+            // Validação: Verificar se o robô já encontrou um humano
+            if (EncontrouHumano)
+            {
+                throw new Exception("Humano já foi coletado pelo robô!");
+            }
+
+            EncontrouHumano = true;
             Log("P");
         }
         public void EjetarHumano()
         {
-            this.EncontrouHumano = false;
+            // Validação: Verificar se há um humano para ser ejetado
+            if (!EncontrouHumano)
+            {
+                throw new Exception("Não há humano para ser ejetado!");
+            }
+
+            EncontrouHumano = false;
             Log("E");
         }
         public void Log(string movimento)
@@ -138,10 +155,10 @@ namespace ConsoleApp.PecasLabirinto
             var astar = new BuscaAStar(mapa);
 
             var caminho = astar.BuscarCaminhoAStar(entrada.Linha, entrada.Coluna, humano.Linha, humano.Coluna);
-            Console.WriteLine("\nCaminho Encontrado");
             if (caminho.Count > 0)
             {
-                for(int i = 0; i < caminho.Count; i++)
+                Console.WriteLine("\nCaminho Encontrado!");
+                for (int i = 0; i < caminho.Count; i++)
                 {
                     if (mapa[caminho[i].Item1, caminho[i].Item2] is Entrada) //Pula a entrada
                     {
@@ -150,7 +167,7 @@ namespace ConsoleApp.PecasLabirinto
                     //Chegou uma posição antes do humano, pegar humano
                     if (caminho[i].Item1 == humano.Linha && caminho[i].Item2 == humano.Coluna)
                     {
-                        PegarHumano();
+                        PegarHumano(humano);
                         humano.ColetadoPeloRobo();
                     }
                     else
