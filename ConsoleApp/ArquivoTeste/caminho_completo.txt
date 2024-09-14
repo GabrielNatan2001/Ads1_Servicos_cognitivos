@@ -1,7 +1,7 @@
-C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\ArquivoTeste\trivial.txt
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\ArquivoTeste\trivial.txt
 
-C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\ArquivoTeste\10x20semerro.txt
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\ArquivoTeste\10x20semerro.txt
 
-C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\ArquivoTeste\10x10normal.txt
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\ArquivoTeste\10x10normal.txt
 
 C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\ArquivoTeste\7x7.txt

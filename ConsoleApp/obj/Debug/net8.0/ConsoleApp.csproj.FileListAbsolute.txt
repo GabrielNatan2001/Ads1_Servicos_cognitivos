@@ -27,3 +27,18 @@ C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8
 C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.pdb
 C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.genruntimeconfig.cache
 C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ref\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.exe
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.deps.json
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.runtimeconfig.json
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.pdb
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.sourcelink.json
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\refint\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.pdb
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ref\ConsoleApp.dll

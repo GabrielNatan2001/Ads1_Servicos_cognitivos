@@ -54,7 +54,7 @@ namespace ConsoleApp
                             case 'E':
                                 this.mapa[linhaAtual, colunaAtual] = new Entrada(linhaAtual, colunaAtual);
                                 this.entrada = new Entrada(linhaAtual, colunaAtual);
-                                this.robo = new Robo(linhaAtual, colunaAtual);
+                                this.robo = new Robo(linhaAtual, colunaAtual, mapa.GetLength(0), mapa.GetLength(1));
                                 break;
                             case 'H':
                                 this.mapa[linhaAtual, colunaAtual] = new Caminho();

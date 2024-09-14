@@ -18,9 +18,9 @@ class Program
             lab.CriarMapa(caminhoArquivo);
             lab.DesenhaMapa();
 
-            lab.robo.IniciarBusca(lab.mapa, lab.entrada, lab.humano);
+            lab.robo.IniciarBusca(lab.mapa, lab.entrada, lab.humano, caminhoArquivo);
 
-            if(lab.humano.Linha == lab.entrada.Linha && lab.humano.Coluna == lab.entrada.Coluna)
+            if (lab.humano.Linha == lab.entrada.Linha && lab.humano.Coluna == lab.entrada.Coluna)
             {
                 Console.WriteLine("Humano saiu do labirinto");
             }
