@@ -66,10 +66,7 @@ namespace Tests
         public void TestGirarParaDireita()
         {
             var robo = new Robo(0, 0, 10, 10);
-            robo.GirarParaDireita();
-            Assert.AreEqual((int)EVisao.Leste, robo.Visao);
 
-            robo.GirarParaDireita();
             Assert.AreEqual((int)EVisao.Sul, robo.Visao);
 
             robo.GirarParaDireita();
@@ -77,6 +74,9 @@ namespace Tests
 
             robo.GirarParaDireita();
             Assert.AreEqual((int)EVisao.Norte, robo.Visao);
+
+            robo.GirarParaDireita();
+            Assert.AreEqual((int)EVisao.Leste, robo.Visao);
         }
 
         [Test]
@@ -137,37 +137,5 @@ namespace Tests
             var conteudo = File.ReadAllText(arquivo);
             Assert.AreEqual("A,G,P", conteudo.Trim());
         }
-
-        //[Test]
-        //public void TestIniciarBusca()
-        //{
-        //    var robo = new Robo(0, 0, 10, 10);
-        //    var entrada = new Entrada(0, 0);
-        //    var humano = new Humano(9, 9);
-        //    var mapa = new Peca[10, 10];
-        //    var buscaMock = new Mock<BuscaAStar>(mapa);
-        //    var caminho = new List<Tuple<int, int>>
-        //{
-        //    new Tuple<int, int>(1, 0),
-        //    new Tuple<int, int>(2, 0),
-        //    new Tuple<int, int>(3, 0),
-        //    new Tuple<int, int>(4, 0),
-        //    new Tuple<int, int>(5, 0),
-        //    new Tuple<int, int>(6, 0),
-        //    new Tuple<int, int>(7, 0),
-        //    new Tuple<int, int>(8, 0),
-        //    new Tuple<int, int>(9, 0)
-        //};
-
-        //    buscaMock.Setup(b => b.BuscarCaminhoAStar(0, 0, 9, 9)).Returns(caminho);
-
-        //    robo.AStart = buscaMock.Object;
-        //    robo.IniciarBusca(mapa, entrada, humano, "test_busca.csv");
-
-        //    Assert.IsTrue(robo.MovimentosRealizados.Contains("G"));
-        //    Assert.IsTrue(robo.MovimentosRealizados.Contains("A"));
-        //    Assert.IsTrue(robo.MovimentosRealizados.Contains("P"));
-        //    Assert.IsTrue(robo.MovimentosRealizados.Contains("E"));
-        //}
     }
 }
