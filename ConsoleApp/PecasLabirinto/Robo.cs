@@ -17,7 +17,7 @@ namespace ConsoleApp.PecasLabirinto
         }
         public int Linha { get; private set; }
         public int Coluna { get; private set; }
-        private bool EncontrouHumano { get; set; } = false;
+        public bool EncontrouHumano { get; set; } = false;
 
         public int Visao { get; private set; }
         public BuscaAStar AStart {  get; set; }
