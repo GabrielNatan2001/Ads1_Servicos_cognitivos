@@ -80,8 +80,7 @@ namespace ConsoleApp.PecasLabirinto
 
         public void PegarHumano(Humano humano)
         {
-            // Validação: Checar se o humano está à frente do robô
-            if (humano.Linha != Linha || humano.Coluna != Coluna)
+            if (!EstaHumanoNaFrente(humano))
             {
                 throw new Exception("Não há humano à frente do robô para ser coletado!");
             }
@@ -94,6 +93,22 @@ namespace ConsoleApp.PecasLabirinto
 
             EncontrouHumano = true;
             Log("P");
+        }
+        private bool EstaHumanoNaFrente(Humano humano)
+        {
+            switch (Visao)
+            {
+                case (int)EVisao.Norte:
+                    return humano.Linha < Linha && humano.Coluna == Coluna;
+                case (int)EVisao.Sul:
+                    return humano.Linha > Linha && humano.Coluna == Coluna;
+                case (int)EVisao.Oeste:
+                    return humano.Coluna < Coluna && humano.Linha == Linha;
+                case (int)EVisao.Leste:
+                    return humano.Coluna > Coluna && humano.Linha == Linha;
+                default:
+                    return false;
+            }
         }
         public void EjetarHumano()
         {
@@ -167,6 +182,14 @@ namespace ConsoleApp.PecasLabirinto
                     //Chegou uma posição antes do humano, pegar humano
                     if (caminho[i].Item1 == humano.Linha && caminho[i].Item2 == humano.Coluna)
                     {
+                        var proximaPosicao = caminho[i];
+
+                        // Calcular a direção para a próxima posição
+                        int direcaoDesejada = CalcularDirecaoParaPosicao(proximaPosicao.Item1, proximaPosicao.Item2);
+
+                        // Girar para a direção correta
+                        GirarParaDirecao(direcaoDesejada);
+
                         PegarHumano(humano);
                         humano.ColetadoPeloRobo();
                     }

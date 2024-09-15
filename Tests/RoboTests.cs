@@ -82,7 +82,7 @@ namespace Tests
         [Test]
         public void TestPegarHumano_Valido()
         {
-            var robo = new Robo(1, 1, 10, 10);
+            var robo = new Robo(2, 1, 10, 10);
             var humano = new Humano(1, 1);
 
             Assert.DoesNotThrow(() => robo.PegarHumano(humano));
@@ -101,7 +101,7 @@ namespace Tests
         [Test]
         public void TestEjetarHumano_Valido()
         {
-            var robo = new Robo(1, 1, 10, 10);
+            var robo = new Robo(2, 1, 10, 10);
             var humano = new Humano(1, 1);
 
             robo.PegarHumano(humano);
@@ -137,5 +137,39 @@ namespace Tests
             var conteudo = File.ReadAllText(arquivo);
             Assert.AreEqual("A,G,P", conteudo.Trim());
         }
+
+        [Test]
+        public void TestIniciarBusca_Simples()
+        {
+            var robo = new Robo(1, 1, 4, 3); 
+            var entrada = new Entrada(1, 1); 
+            var humano = new Humano(2, 1); 
+            var mapa = new Peca[4, 3];
+
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    mapa[i, j] = new Caminho(); 
+                }
+            }
+            mapa[1, 1] = entrada;
+            mapa[2, 1] = humano; 
+
+            var buscaAStar = new BuscaAStar(mapa);
+
+            robo.AStart = buscaAStar;
+
+             robo.IniciarBusca(mapa, entrada, humano, "test_busca.csv");
+
+            Assert.IsTrue(robo.MovimentosRealizados.Contains("G")); 
+            Assert.IsTrue(robo.MovimentosRealizados.Contains("P")); 
+            Assert.IsTrue(robo.MovimentosRealizados.Contains("E")); 
+
+            Assert.AreEqual(entrada.Linha, robo.Linha); 
+            Assert.AreEqual(entrada.Coluna, robo.Coluna); 
+            Assert.IsFalse(humano.Coletado); 
+        }
+
     }
 }
