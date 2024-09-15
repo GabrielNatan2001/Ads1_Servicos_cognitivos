@@ -1,0 +1,44 @@
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\bin\Debug\net8.0\ConsoleApp.exe
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\bin\Debug\net8.0\ConsoleApp.deps.json
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\bin\Debug\net8.0\ConsoleApp.runtimeconfig.json
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\bin\Debug\net8.0\ConsoleApp.dll
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\bin\Debug\net8.0\ConsoleApp.pdb
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ConsoleApp.dll
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\refint\ConsoleApp.dll
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ConsoleApp.pdb
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\dev\Downloads\Ads1_Servicos_cognitivos-main\Ads1_Servicos_cognitivos-main\ConsoleApp\obj\Debug\net8.0\ref\ConsoleApp.dll
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.exe
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.deps.json
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.runtimeconfig.json
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.dll
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.pdb
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.sourcelink.json
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.dll
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\refint\ConsoleApp.dll
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.pdb
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\gabriel\source\repos\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ref\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.exe
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.deps.json
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.runtimeconfig.json
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\bin\Debug\net8.0\ConsoleApp.pdb
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.sourcelink.json
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\refint\ConsoleApp.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.pdb
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\gabri\OneDrive\Área de Trabalho\Gabriel\Ads1_Servicos_cognitivos\ConsoleApp\obj\Debug\net8.0\ref\ConsoleApp.dll

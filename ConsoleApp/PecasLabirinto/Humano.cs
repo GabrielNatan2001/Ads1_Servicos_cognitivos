@@ -16,5 +16,23 @@ namespace ConsoleApp.PecasLabirinto
         public int Linha { get; private set; }
         public int Coluna { get; private set; }
         public bool Coletado { get; private set; } = false;
+
+        public void ColetadoPeloRobo()
+        {
+            Coletado = true;
+        }
+
+        internal void Ejetado(int linha, int coluna)
+        {
+            this.Linha = linha;
+            this.Coluna = coluna;
+            Coletado = false;
+        }
+
+        public void AlterarPosicao(int linha, int coluna)
+        {
+            this.Linha = linha;
+            this.Coluna = coluna;
+        }
     } 
 }

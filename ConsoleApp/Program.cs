@@ -16,17 +16,16 @@ class Program
             Labirinto lab = new();
 
             lab.CriarMapa(caminhoArquivo);
-            lab.PopularMapa(caminhoArquivo);
             lab.DesenhaMapa();
 
-            Robo robo = new Robo(lab.LinhaEntrada, lab.ColunaEntrada);
+            lab.robo.IniciarBusca(lab.mapa, lab.entrada, lab.humano, caminhoArquivo);
 
-            Console.WriteLine($"Robo está olhando para [{robo.VisaoLinha}][{robo.VisaoColuna}]");
-            robo.GirarParaDireita();
-            Console.WriteLine($"Robo está olhando para [{robo.VisaoLinha}][{robo.VisaoColuna}]");
-            Console.WriteLine($"Robo está na posição [{robo.Linha}][{robo.Coluna}]");
-            robo.MoverParaFrente();
-            Console.WriteLine($"Robo está na posição [{robo.Linha}][{robo.Coluna}]");
+            if (lab.humano.Linha == lab.entrada.Linha && lab.humano.Coluna == lab.entrada.Coluna)
+            {
+                Console.WriteLine("Humano saiu do labirinto");
+            }
+            
+            Console.ReadLine();
         }
         catch (Exception ex)
         {
