@@ -1,4 +1,5 @@
-﻿using ConsoleApp.Enums;
+﻿using ConsoleApp;
+using ConsoleApp.Enums;
 using ConsoleApp.PecasLabirinto;
 using Moq;
 using System;
@@ -12,6 +13,14 @@ namespace Tests
     [TestFixture]
     public class RoboTests
     {
+        public Peca[,] mapa;
+
+        public RoboTests()
+        {
+            this.mapa = new Peca[1, 1];
+
+        }
+
         [Test]
         public void TestIniciandoVisao_BordaSuperior()
         {
@@ -69,13 +78,13 @@ namespace Tests
 
             Assert.AreEqual((int)EVisao.Sul, robo.Visao);
 
-            robo.GirarParaDireita();
+            robo.GirarParaDireita(0,0,mapa);
             Assert.AreEqual((int)EVisao.Oeste, robo.Visao);
 
-            robo.GirarParaDireita();
+            robo.GirarParaDireita(0, 0, mapa);
             Assert.AreEqual((int)EVisao.Norte, robo.Visao);
 
-            robo.GirarParaDireita();
+            robo.GirarParaDireita(0, 0, mapa);
             Assert.AreEqual((int)EVisao.Leste, robo.Visao);
         }
 
@@ -85,7 +94,7 @@ namespace Tests
             var robo = new Robo(2, 1, 10, 10);
             var humano = new Humano(1, 1);
 
-            Assert.DoesNotThrow(() => robo.PegarHumano(humano));
+            Assert.DoesNotThrow(() => robo.PegarHumano(humano, 0, 0, mapa));
             Assert.IsTrue(robo.EncontrouHumano);
         }
 
@@ -95,7 +104,7 @@ namespace Tests
             var robo = new Robo(1, 1, 10, 10);
             var humano = new Humano(2, 2);
 
-            Assert.Throws<Exception>(() => robo.PegarHumano(humano));
+            Assert.Throws<Exception>(() => robo.PegarHumano(humano, 0, 0, mapa));
         }
 
         [Test]
@@ -104,8 +113,8 @@ namespace Tests
             var robo = new Robo(2, 1, 10, 10);
             var humano = new Humano(1, 1);
 
-            robo.PegarHumano(humano);
-            Assert.DoesNotThrow(() => robo.EjetarHumano());
+            robo.PegarHumano(humano, 0, 0, mapa);
+            Assert.DoesNotThrow(() => robo.EjetarHumano(0, 0, mapa));
             Assert.IsFalse(robo.EncontrouHumano);
         }
 
@@ -114,16 +123,16 @@ namespace Tests
         {
             var robo = new Robo(1, 1, 10, 10);
 
-            Assert.Throws<Exception>(() => robo.EjetarHumano());
+            Assert.Throws<Exception>(() => robo.EjetarHumano(0, 0, mapa));
         }
 
         [Test]
         public void TestExportarLog()
         {
             var robo = new Robo(1, 1, 10, 10);
-            robo.Log("A");
-            robo.Log("G");
-            robo.Log("P");
+            robo.MovimentosRealizados.Add("A");
+            robo.MovimentosRealizados.Add("G");
+            robo.MovimentosRealizados.Add("P");
 
             var arquivo = "test_log.csv";
             if (File.Exists(arquivo))
@@ -134,8 +143,8 @@ namespace Tests
             robo.ExportarLog(arquivo);
             Assert.IsTrue(File.Exists(arquivo));
 
-            var conteudo = File.ReadAllText(arquivo);
-            Assert.AreEqual("A,G,P", conteudo.Trim());
+            var conteudo = File.ReadAllText(arquivo).Split("\r\n").FirstOrDefault();
+            Assert.AreEqual("Comando enviados,Ligar,A,G,P", conteudo.Trim());
         }
 
         [Test]
